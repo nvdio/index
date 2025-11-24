@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yahoo Finance 52-Week Summary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="shell">
+      <h1>Yahoo Finance 52-Week Summary</h1>
+      <p class="lede">Enter one or more tickers, separated by commas, to fetch the latest price alongside the 52-week low and high pulled directly from Yahoo Finance's chart API.</p>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="panel">
+      <form id="ticker-form" class="form" autocomplete="off">
+        <label for="tickers" class="form__label">Tickers</label>
+        <div class="form__controls">
+          <input type="text" id="tickers" name="tickers" placeholder="e.g. AAPL, MSFT, AMZN" required />
+          <button type="submit" class="btn">Fetch data</button>
+        </div>
+        <p class="form__hint">Separate multiple tickers with commas. Data uses a 1-year range with daily candles.</p>
+      </form>
+
+      <div id="status" class="status" aria-live="polite"></div>
+
+      <div class="table-wrapper">
+        <table id="results-table" class="table" aria-live="polite">
+          <thead>
+            <tr>
+              <th scope="col">Symbol</th>
+              <th scope="col">As of</th>
+              <th scope="col">Price</th>
+              <th scope="col">52W Low (date)</th>
+              <th scope="col">52W High (date)</th>
+              <th scope="col">Dist. from Low</th>
+              <th scope="col">Dist. from High</th>
+              <th scope="col">% Above Low</th>
+            </tr>
+          </thead>
+          <tbody id="results-body">
+            <tr class="placeholder">
+              <td colspan="8">Results will appear here after you fetch data.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <p class="footer__note">Powered by the public Yahoo Finance chart endpoint. Calculations mirror the Access/VBA logic for 52-week highs and lows.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
